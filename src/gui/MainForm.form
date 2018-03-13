@@ -196,11 +196,17 @@
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Negrita"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxNegritaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="checkBoxCursiva">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cursiva"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxCursivaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -223,7 +229,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="radioButtonPequeño" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioButtonPequenio" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="radioButtonMediano" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="radioButtonGrande" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -235,7 +241,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="radioButtonPequeño" min="-2" max="-2" attributes="0"/>
+                  <Component id="radioButtonPequenio" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="radioButtonMediano" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -246,7 +252,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JRadioButton" name="radioButtonPeque&#xf1;o">
+        <Component class="javax.swing.JRadioButton" name="radioButtonPequenio">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="grupoTamanio"/>
@@ -255,7 +261,7 @@
             <Property name="text" type="java.lang.String" value="Peque&#xf1;o"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioButtonPeque&#xf1;oActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioButtonPequenioActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioButtonMediano">
@@ -265,6 +271,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Mediano"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioButtonMedianoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="radioButtonGrande">
           <Properties>
@@ -273,6 +282,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Grande"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioButtonGrandeActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

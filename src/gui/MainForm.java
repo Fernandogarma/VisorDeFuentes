@@ -5,17 +5,46 @@
  */
 package gui;
 
+import java.awt.Font;
+import model.TextoConFormato;
+
 /**
  *
  * @author Luis Fernando Garma
  */
-public class MainForm extends javax.swing.JFrame {
+public class MainForm extends javax.swing.JFrame { 
+  private void actualizarVista(){
+    etiquetaTexto.setText(txt.getTexto());
+    etiquetaTexto.setFont(txt.getFont());
+}
+  private void actualizarModelo() {
+      txt.setTexto(etiquetaTexto.getText());
+      txt.setFuente((String)comboBoxFuente.getSelectedItem());
+      txt.setEstilo(Font.PLAIN);
+      if (checkBoxNegrita.isSelected()) {
+          txt.setEstilo(txt.getEstilo() + Font.ITALIC);
+      }
+      if (radioButtonPequenio.isSelected()) {
+          txt.setTamanio(TextoConFormato.TAMANIO_PEQUENIO);
+      }
+      else if (radioButtonMediano.isSelected()) {
+          txt.setTamanio(TextoConFormato.TAMANIO_MEDIANO);
+      }
+      else {
+          txt.setTamanio(TextoConFormato.TAMANIO_GRANDE);
+      }
+  }
+  private final String TEXTO_PREDET = "Instituto Tecnologico de Campeche";
+    TextoConFormato txt;
 
     /**
      * Creates new form MainForm
      */
     public MainForm() {
         initComponents();
+        txt = new TextoConFormato(TEXTO_PREDET);
+        actualizarModelo();
+        actualizarVista();
     }
 
     /**
@@ -36,7 +65,7 @@ public class MainForm extends javax.swing.JFrame {
         checkBoxNegrita = new javax.swing.JCheckBox();
         checkBoxCursiva = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        radioButtonPequeño = new javax.swing.JRadioButton();
+        radioButtonPequenio = new javax.swing.JRadioButton();
         radioButtonMediano = new javax.swing.JRadioButton();
         radioButtonGrande = new javax.swing.JRadioButton();
 
@@ -94,8 +123,18 @@ public class MainForm extends javax.swing.JFrame {
 
         checkBoxNegrita.setSelected(true);
         checkBoxNegrita.setText("Negrita");
+        checkBoxNegrita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxNegritaActionPerformed(evt);
+            }
+        });
 
         checkBoxCursiva.setText("Cursiva");
+        checkBoxCursiva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxCursivaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -119,20 +158,30 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Tamaño"));
 
-        grupoTamanio.add(radioButtonPequeño);
-        radioButtonPequeño.setSelected(true);
-        radioButtonPequeño.setText("Pequeño");
-        radioButtonPequeño.addActionListener(new java.awt.event.ActionListener() {
+        grupoTamanio.add(radioButtonPequenio);
+        radioButtonPequenio.setSelected(true);
+        radioButtonPequenio.setText("Pequeño");
+        radioButtonPequenio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioButtonPequeñoActionPerformed(evt);
+                radioButtonPequenioActionPerformed(evt);
             }
         });
 
         grupoTamanio.add(radioButtonMediano);
         radioButtonMediano.setText("Mediano");
+        radioButtonMediano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioButtonMedianoActionPerformed(evt);
+            }
+        });
 
         grupoTamanio.add(radioButtonGrande);
         radioButtonGrande.setText("Grande");
+        radioButtonGrande.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioButtonGrandeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -141,7 +190,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radioButtonPequeño)
+                    .addComponent(radioButtonPequenio)
                     .addComponent(radioButtonMediano)
                     .addComponent(radioButtonGrande))
                 .addContainerGap(24, Short.MAX_VALUE))
@@ -150,7 +199,7 @@ public class MainForm extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(radioButtonPequeño)
+                .addComponent(radioButtonPequenio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(radioButtonMediano)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -190,12 +239,29 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxFuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFuenteActionPerformed
-        // TODO add your handling code here:
+        actualizarModelo();
+        actualizarVista();
     }//GEN-LAST:event_comboBoxFuenteActionPerformed
 
-    private void radioButtonPequeñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonPequeñoActionPerformed
+    private void radioButtonPequenioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonPequenioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_radioButtonPequeñoActionPerformed
+    }//GEN-LAST:event_radioButtonPequenioActionPerformed
+
+    private void checkBoxNegritaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxNegritaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBoxNegritaActionPerformed
+
+    private void checkBoxCursivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxCursivaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBoxCursivaActionPerformed
+
+    private void radioButtonMedianoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonMedianoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioButtonMedianoActionPerformed
+
+    private void radioButtonGrandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonGrandeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioButtonGrandeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,6 +310,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton radioButtonGrande;
     private javax.swing.JRadioButton radioButtonMediano;
-    private javax.swing.JRadioButton radioButtonPequeño;
+    private javax.swing.JRadioButton radioButtonPequenio;
     // End of variables declaration//GEN-END:variables
 }
